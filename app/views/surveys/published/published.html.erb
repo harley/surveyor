@@ -1,0 +1,16 @@
+<div>
+  <h2> Survey: <%= @form.title %> </h2>
+</div>
+
+<%= form_for @form do |f| %>
+
+  <%= f.fields_for :questions do |fq| %>
+    <%= render "surveys/published/question_form", f: fq, survey: f.object %>
+  <% end %>
+
+  <div class="card-footer">
+    <%= link_to "Submit", '#', class: 'btn btn-secondary pull-xs-left' %>
+    <%= link_to "Close", root_path, class: 'btn btn-secondary pull-xs-right' %>
+    <div class="clearfix"></div>
+  </div>
+<% end %>

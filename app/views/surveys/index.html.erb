@@ -2,7 +2,7 @@
 
 <ul>
   <% Survey.all.each do |survey| %>
-    <li><%= link_to survey.title || "No title", edit_survey_path(survey) %></li>
+    <li><%= link_to survey.title || "No title", edit_survey_path(survey) %> - <%= link_to 'View', published_survey_path(survey) %> </li>
   <% end %>
 </ul>
 

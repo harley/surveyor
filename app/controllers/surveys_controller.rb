@@ -42,6 +42,13 @@ class SurveysController < ApplicationController
     end
   end
 
+  def published
+    survey = Survey.find params[:id]
+    @form = PublishedSurveyForm.new survey
+    @form.prepopulate!
+    render 'surveys/published/published'
+  end
+
   private
 
   def survey_params

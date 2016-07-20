@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :choices
   resources :questions
-  resources :surveys
+  resources :surveys do
+    member do
+      get :published
+    end
+  end
   resources :sessions, only: [:new, :create]
   resources :users
   root 'surveys#index'
