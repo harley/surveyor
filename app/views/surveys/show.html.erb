@@ -1,0 +1,11 @@
+<h1><%= @form.title %></h1>
+<%= form_for @form do |f| %>
+    <%= f.fields_for :questions do |question_field| %>
+        <section class="card">
+          <div class="card-block">
+            <h4 class="card-title"><%= question_field.object.title %></h4>
+            <%= render("response_field_#{question_field.object.type}", question_field: question_field) %>
+          </div>
+        </section>
+    <% end %>
+<% end %>

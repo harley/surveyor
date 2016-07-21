@@ -1,0 +1,8 @@
+<%= question_field.fields_for :choices do |choice_field| %>
+    <div class="checkbox">
+      <label>
+        <%= choice_field.check_box :content, class: 'form-control' %>
+        <%= choice_field.object.content %>
+      </label>
+    </div>
+<% end %>
