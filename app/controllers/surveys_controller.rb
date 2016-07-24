@@ -4,7 +4,7 @@ class SurveysController < ApplicationController
   end
 
   def show
-    redirect_to action: 'edit'
+    load_survey_form
   end
 
   def create

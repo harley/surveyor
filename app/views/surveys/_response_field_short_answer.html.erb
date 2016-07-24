@@ -1,0 +1,5 @@
+<%= question_field.fields_for :choices do |choice_field| %>
+    <fieldset class="form-group">
+      <%= choice_field.text_area :content, class: 'form-control', label: 'Your answer' %>
+    </fieldset>
+<% end %>
