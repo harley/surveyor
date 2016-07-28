@@ -9,4 +9,20 @@ class ApplicationController < ActionController::Base
       @current_user = User.find_by_id session[:user_id]
     end
   end
+
+  def authenticate_user!
+    unless current_user
+      render plain: 'Access Denied.', status: 403
+    end
+  end
+
+  def authorize(controller, action)
+    unless current_permission.allow?(controller, action)
+      redirect_to root_path, alert: "Insufficient Permission."
+    end
+  end
+
+  def current_permission
+    Permission.new(current_user)
+  end
 end

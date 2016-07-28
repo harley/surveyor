@@ -1,4 +1,6 @@
 class SurveysController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     @surveys = Survey.all
   end
@@ -21,6 +23,7 @@ class SurveysController < ApplicationController
   end
 
   def edit
+    authorize controller_name, action_name
     load_survey_form
     @form.prepopulate!
   end

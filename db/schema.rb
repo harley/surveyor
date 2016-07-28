@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724182546) do
+ActiveRecord::Schema.define(version: 20160725013854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 20160724182546) do
     t.index ["survey_id"], name: "index_questions_on_survey_id", using: :btree
   end
 
+  create_table "resources", force: :cascade do |t|
+    t.integer  "survey_id"
+    t.string   "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_resources_on_survey_id", using: :btree
+  end
+
   create_table "responses", force: :cascade do |t|
     t.integer  "survey_id"
     t.string   "ip"
@@ -61,8 +69,9 @@ ActiveRecord::Schema.define(version: 20160724182546) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "admin",           default: false
   end
 
   add_foreign_key "answers", "choices"
@@ -70,5 +79,6 @@ ActiveRecord::Schema.define(version: 20160724182546) do
   add_foreign_key "answers", "responses"
   add_foreign_key "choices", "questions"
   add_foreign_key "questions", "surveys"
+  add_foreign_key "resources", "surveys"
   add_foreign_key "responses", "surveys"
 end
