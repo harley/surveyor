@@ -10,7 +10,12 @@
   <body>
     <div class="container">
       <nav class="navbar navbar-light bg-faded">
-        <a class="navbar-brand" href="/">Surveyor</a>
+        <a class="navbar-brand" href="/">
+          Surveyor
+          <% if current_user.try(:admin?) %>
+            <span class="label label-primary">admin</span>
+          <% end %>
+        </a>
         <ul class="nav navbar-nav">
           <li class="nav-item">
             <%= link_to "Home", root_path, class: 'nav-link' %>
@@ -19,7 +24,7 @@
         <ul class="nav navbar-nav pull-xs-right">
           <li class="nav-item">
             <% if current_user %>
-              <%= link_to "Log out", logout_path, class: 'nav-link' %>
+              <%= link_to "Log out", logout_path, class: 'nav-link', method: 'delete' %>
             <% else %>
               <%= link_to "Log in", new_session_path, class: 'nav-link' %>
             <% end %>
@@ -34,7 +39,9 @@
       <% flash.each do |key, value| %>
         <div class="alert alert-warning"><%= value %></div>
       <% end %>
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
