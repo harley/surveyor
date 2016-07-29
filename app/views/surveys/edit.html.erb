@@ -1,7 +1,5 @@
-<h1>
-  Questions |
-  <%= link_to "Responses", survey_responses_path(@form) %>
-</h1>
+<h1><%= link_to "Questions", edit_survey_path(@form) %> | <%= link_to "Responses", survey_responses_path(@form) %> | <%= link_to "Collaborations", survey_collaborations_path(@form) %> </h1>
+
 
 <%= form_for @form do |f| %>
   <%= render "errors", object: f.object %>

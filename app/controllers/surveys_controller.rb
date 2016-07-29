@@ -16,6 +16,7 @@ class SurveysController < ApplicationController
   def create
     build_survey_form
     if @form.save
+      Collaboration.owner(survey: @form.model, user: current_user)
       redirect_to edit_survey_path(@form)
     else
       render 'new'

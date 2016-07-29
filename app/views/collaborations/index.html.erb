@@ -1,0 +1,24 @@
+<h1><%= link_to "Questions", edit_survey_path(@survey) %> | <%= link_to "Responses", survey_responses_path(@survey) %> | Collaborations </h1>
+
+<p>
+  <%= link_to "New Collborator", new_survey_collaboration_path(@survey), class: 'btn btn-secondary' %>
+</p>
+
+<table class="table table-sm table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>Role</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @survey.collaborations.each do |collaboration| %>
+    <tr>
+      <td><%= collaboration.user.email %></td>
+      <td><%= collaboration.role %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

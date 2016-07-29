@@ -1,0 +1,3 @@
+class CollaborationForm
+
+end

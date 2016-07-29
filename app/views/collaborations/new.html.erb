@@ -1,0 +1,20 @@
+<h1>
+  <%= link_to "Questions", survey_path(@survey) %> |
+  <%= link_to "Responses", survey_responses_path(@survey) %> |
+  <%= link_to "Collaborations", survey_collaborations_path(@survey) %>
+</h1>
+
+<h1>New Collaborator</h1>
+
+<div class="card">
+  <div class="card-header">
+    <h3><%= @survey.title %></h3>
+  </div>
+  <div class="card-block">
+    <%= form_for [@survey, @collaboration] do |f| %>
+        <%= f.select :user_id, User.all.map { |e| [e.email, e.id] }, {}, class: 'form-control' %>
+        <%= f.select :role, Collaboration.role_options, class: 'form-control' %>
+        <%= f.submit "Add", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

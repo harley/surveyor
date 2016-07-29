@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:destroy]
   resources :surveys do
     resources :responses
+    resources :collaborations
   end
   resources :sessions, only: [:new, :create]
   delete 'logout' => 'sessions#destroy'

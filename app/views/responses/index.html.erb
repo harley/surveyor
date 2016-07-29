@@ -1,4 +1,4 @@
-<h1><%= link_to "Questions", edit_survey_path(@survey) %> | Responses</h1>
+<h1><%= link_to "Questions", edit_survey_path(@survey) %> | <%= link_to "Responses", survey_responses_path(@survey) %> | <%= link_to "Collaborations", survey_collaborations_path(@survey) %> </h1>
 
 <p>
   <%= link_to "New Response", new_survey_response_path(@survey), class: 'btn btn-secondary' %>
