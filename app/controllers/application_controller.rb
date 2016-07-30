@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authorize(controller, action)
+  def authorize(controller = controller_name, action = action_name)
     unless current_permission.allow?(controller, action)
       if block_given?
         yield

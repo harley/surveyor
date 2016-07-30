@@ -5,4 +5,8 @@ class User < ApplicationRecord
   def role
     admin? ? 'admin' : 'user'
   end
+
+  def visitor?
+    false
+  end
 end

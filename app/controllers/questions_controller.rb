@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :authorize
+
   def destroy
     @question = Question.find params[:id]
     @question.destroy

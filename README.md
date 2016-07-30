@@ -1,24 +1,9 @@
-# README
+## Setup guard
+http://stackoverflow.com/questions/11996124/is-it-impossible-to-use-guard-with-rubymine/12000765#12000765
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Stories
+[*] Admin can visit surveys controller and all CRUD actions
+[*] Visitor can visit surveys controller and show action only
+[ ] User can visit surveys controller except destroy action
+[ ] User when visiting index action, can only see his own surveys
+[ ] Admin when visiting index action, can see all surveys

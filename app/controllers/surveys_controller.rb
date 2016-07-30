@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :authorize, except: [:index, :edit]
 
   def index
     @surveys = AccessibleSurveys.new(current_user).surveys
@@ -13,7 +14,7 @@ class SurveysController < ApplicationController
     redirect_to new_survey_response_path(params[:id])
   end
 
-  def create
+  def creates
     build_survey_form
     if @form.save
       Collaboration.owner(survey: @form.model, user: current_user)
@@ -24,8 +25,8 @@ class SurveysController < ApplicationController
   end
 
   def edit
-    authorize controller_name, action_name do
-      redirect_to survey_path(params[:survey_id])
+    authorize do
+      redirect_to survey_path(params[:id])
     end
 
     load_survey_form

@@ -1,6 +1,8 @@
 class ResponsesController < ApplicationController
+  before_action :authorize, except: [:index]
+
   def index
-    authorize :response, :index do
+    authorize do
       redirect_to new_survey_response_path(params[:survey_id])
     end
 

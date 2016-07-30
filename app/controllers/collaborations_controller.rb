@@ -1,4 +1,6 @@
 class CollaborationsController < ApplicationController
+  before_action :authorize
+
   def index
     load_survey_form
   end
