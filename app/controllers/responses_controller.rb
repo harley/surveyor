@@ -1,5 +1,9 @@
 class ResponsesController < ApplicationController
   def index
+    authorize :response, :index do
+      redirect_to new_survey_response_path(params[:survey_id])
+    end
+
     load_survey
   end
 
