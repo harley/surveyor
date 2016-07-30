@@ -1,20 +1,16 @@
 class Permission < Struct.new(:user)
+  delegate :role, to: :user, prefix: false
+
   LOOKUP = {
-    "admin" => ["surveys#new", "surveys#create", "surveys#edit", "surveys#update", "surveys#destroy"],
-    "user" => ["surveys#new", "surveys#create"],
+    "admin" => ["surveys#new", "surveys#create", "surveys#edit", "surveys#update", "surveys#destroy", "surveys#show"],
+    "user" => ["surveys#new", "surveys#create", "surveys#edit", "surveys#update", "surveys#show"],
     "owner" => ["surveys#new", "surveys#create"],
     "viewer" => ["surveys#show"],
     "editor" => ["surveys#edit"],
-    "guest" => []
+    "visitor" => ["surveys#show"]
   }
   def allow?(controller, action)
     right = "#{controller}##{action}"
     LOOKUP[role] && LOOKUP[role].include?(right)
-  end
-
-  private
-
-  def role
-    user.try(:role) || "guest"
   end
 end

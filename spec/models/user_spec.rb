@@ -8,4 +8,9 @@ RSpec.describe User, type: :model do
       expect(user.admin?).to eq false
     end
   end
+
+  describe "VISITOR" do
+    it { expect(User::VISITOR.admin?).not_to be_truthy }
+    it { expect(User::VISITOR.role).to eql "visitor" }
+  end
 end
