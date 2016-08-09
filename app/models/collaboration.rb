@@ -23,4 +23,8 @@ class Collaboration < ApplicationRecord
   def self.owner(survey: survey, user: user)
     Collaboration.create(survey: survey, user: user, role: roles[:owner])
   end
+
+  def self.editor(survey: survey, user: user)
+    Collaboration.create(survey: survey, user: user, role: roles[:editor])
+  end
 end

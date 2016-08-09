@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   private
+
   def current_user
     return @current_user if @current_user
     if session[:user_id]
@@ -19,7 +20,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authorize(controller = controller_name, action = action_name)
+  def authorize(controller = controller_name, action = action_name, resource = nil)
+    if resource
+      klass = "#{resource.class.name}#{action.capitalize}Permission"
+      klass.constantize.new(current_user)
+    end
     unless current_permission.allow?(controller, action)
       if block_given?
         yield
@@ -31,6 +36,10 @@ class ApplicationController < ActionController::Base
 
   def current_permission
     Permission.new(current_user)
+  end
+
+  class PermissionWrapper
+
   end
 
 end
