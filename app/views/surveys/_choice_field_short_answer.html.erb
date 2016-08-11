@@ -1,5 +1,5 @@
 <div class="form-group form-inline">
   <input type="text" placeholder="Short answer text" class="form-control" disabled/>
-  <%= debug fc.object %>
   <%= fc.hidden_field :content, value: '' %>
+  <%= fc.hidden_field :allow_blank, value: 'true' %>
 </div>

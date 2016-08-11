@@ -10,13 +10,13 @@ class QuestionForm < Reform::Form
   end
 
   def skip_blank_choices(options)
-    options[:fragment]['content'].blank?
+    options[:fragment]['content'].blank? unless options[:fragment]['allow_blank']
   end
 
   def set_up_choices(options)
     case type.to_sym
     when :short_answer
-      # don't add choices
+      # don't add more than 1 choice
       self.choices << Choice.new if choices.length == 0
     else
       # always add an extra choice to render
