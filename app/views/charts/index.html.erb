@@ -1,0 +1,10 @@
+<h1><%= @survey.title %></h1>
+
+<% @survey.questions.each do |q| %>
+  <div class="card">
+    <h3 class="card-header"><%= q.title %></h3>
+    <div class="card-block">
+      <%= render("charts/question_charts/#{q.type}", question: q) rescue $! %>
+    </div>
+  </div>
+<% end %>

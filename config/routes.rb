@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :collaborations, only: [:destroy]
 
+  get 'surveys/:survey_id/charts' => 'charts#index'
   resources :choices, only: [:destroy]
   resources :questions, only: [:destroy]
   resources :surveys do

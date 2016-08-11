@@ -1,0 +1,7 @@
+<% hash = question.answers.group(:content).count.to_a.sort_by(&:last).take(40).to_h %>
+<% max = hash.values.max  %>
+<% hash.each do |key, value| %>
+  <span class="label label-default" style="margin: 2px; font-size: <%= (max+value) * 1.0 / max %>em;" data-title="Count: <%= value %>" data-toggle="tooltip">
+    <%= key %>
+  </span>
+<% end %>

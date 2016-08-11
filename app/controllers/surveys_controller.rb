@@ -53,7 +53,7 @@ class SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(:title, questions_attributes: [:title, :type, choices_attributes: [:content]]) if params[:survey]
+    params.require(:survey).permit(:title, questions_attributes: [:id, :title, :type, choices_attributes: [:content, :id]]) if params[:survey]
   end
 
   def build_survey_form
