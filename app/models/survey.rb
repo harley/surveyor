@@ -30,8 +30,9 @@ class Survey < ApplicationRecord
         puts "creaing answers for : #{q.type.inspect}"
         case q.type.to_sym
         when :short_answer
-          c = q.choices.sample
-          Answer.create! choice: c, question: q, response: r, content: Faker::Pokemon.name
+          q.choices.each do |c|
+            Answer.create! choice: c, question: q, response: r, content: Faker::Pokemon.name
+          end
         when :multiple_choice
           c = q.choices.sample
           Answer.create! choice: c, question: q, response: r, content: c.content

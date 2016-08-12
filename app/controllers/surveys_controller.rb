@@ -37,16 +37,20 @@ class SurveysController < ApplicationController
       @add_question_count.times do
         @form.questions << Question.new
       end
-      @form.prepopulate!
-      render 'edit'
-    else
-      if @form.validate survey_params
-        @form.save
-        redirect_to edit_survey_path(@form), notice: "Saved."
-      else
-        @form.prepopulate!
-        render 'edit'
+    elsif @form.validate survey_params
+      @form.save
+    end
+    @form.prepopulate!
+
+    respond_to do |format|
+      format.html do
+        if @form.valid?
+          redirect_to edit_survey_path(@form), notice: "Saved!"
+        else
+          render 'edit'
+        end
       end
+      format.js
     end
   end
 

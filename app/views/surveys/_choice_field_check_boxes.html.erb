@@ -5,6 +5,6 @@
   </label>
   <%=  fc.text_field :content, placeholder: "Choice", class: 'form-control' %>
   <% if fc.object.persisted? %>
-    <%= link_to "&times;".html_safe, fc.object, method: 'delete', class: 'btn btn-secondary' %>
+    <%= link_to "&times;".html_safe, fc.object, method: 'delete', class: 'btn btn-secondary', remote: true %>
   <% end %>
 </div>

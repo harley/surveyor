@@ -1,0 +1,3 @@
+notice = $("<div class='alert alert-info update-status'>Saved</div>")
+$("form.edit_survey").html("<%= j render 'surveys/form', survey: @form %>").before(notice);
+setTimeout(function(){ notice.fadeOut().remove() }, 3000);

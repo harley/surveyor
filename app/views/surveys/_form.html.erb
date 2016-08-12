@@ -1,0 +1,20 @@
+<%= form_for survey, remote: true do |f| %>
+  <%= render "surveys/errors", object: f.object %>
+  <div class="form-group">
+    <%= f.text_field :title, placeholder: "Survey title", class: 'form-control' %>
+  </div>
+
+  <%= f.fields_for :questions do |fq| %>
+    <%= render "surveys/question_form", f: fq, survey: f.object %>
+  <% end %>
+
+  <% if @add_question_count %>
+    <%= hidden_field_tag :add_question_count, @add_question_count %>
+  <% end %>
+
+  <div class="card-footer">
+    <%= f.submit "Save", class: 'btn btn-secondary pull-xs-left' %>
+    <%= f.button "Add Question", name: "add_question", class: 'btn btn-secondary pull-xs-right' %>
+    <div class="clearfix"></div>
+  </div>
+<% end %>
