@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
   def index
     load_survey
+    @responses = @survey.responses.page(params[:page]).per(params[:per])
   end
 
   def new

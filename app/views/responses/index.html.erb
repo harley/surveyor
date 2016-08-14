@@ -4,6 +4,7 @@
   <%= link_to "New Response", new_survey_response_path(@survey), class: 'btn btn-secondary' %>
 </p>
 
+<%= paginate @responses %>
 <table class="table table-sm table-bordered table-striped">
   <thead>
     <tr>
@@ -14,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @survey.responses.each do |response| %>
+    <% @responses.each do |response| %>
       <tr>
         <td><%= response.id %></td>
         <% @survey.questions.each do |question| %>
@@ -34,5 +35,4 @@
     <% end %>
   </tbody>
 </table>
-
-
+<%= paginate @responses %>
