@@ -1,0 +1,1 @@
+<%= bar_chart question.answers.group(:content).count.to_a.sort_by(&:last).reverse.to_h %>
