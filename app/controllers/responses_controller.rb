@@ -42,6 +42,20 @@ class ResponsesController < ApplicationController
     end
   end
 
+  def show
+    @response = Response.find params[:id]
+    @survey = @response.survey
+    @form = ResponseForm.new(@response)
+    @form.prepopulate!
+  end
+
+  def destroy
+    @response = Response.find params[:id]
+    path = survey_response_path(@response.survey, @response.previous)
+    @response.destroy
+    redirect_to path
+  end
+
   private
   def load_survey
     @survey = Survey.find params[:survey_id]
