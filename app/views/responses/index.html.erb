@@ -4,35 +4,6 @@
   <%= link_to "New Response", new_survey_response_path(@survey), class: 'btn btn-secondary' %>
 </p>
 
-<table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>#</th>
-      <% @survey.questions.each do |question| %>
-        <th><%= question.title %></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @survey.responses.each do |response| %>
-      <tr>
-        <td><%= response.id %></td>
-        <% @survey.questions.each do |question| %>
-          <td>
-            <% question.choices.each do |choice| %>
-              <div>
-                <% response.answers_for(question: question, choice: choice).each do |answer| %>
-                  <span data-answer-id="<%= answer.id %>">
-                    <%= answer.content %>
-                  </span>
-                <% end %>
-              </div>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
+<div class="responses-wrapper">
+  <%= render "responses", survey: @survey, responses: @responses %>
+</div>
