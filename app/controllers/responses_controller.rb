@@ -2,6 +2,11 @@ class ResponsesController < ApplicationController
   def index
     load_survey
     @responses = @survey.responses.page(params[:page]).per(params[:per])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
