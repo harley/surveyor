@@ -1,16 +1,16 @@
-<div class="card">
+<div class="card question-card">
   <div class="card-block">
     <div class="form-group row">
-      <div class="col-sm-10">
+      <div class="col-sm-9">
         <%= f.text_field :title, placeholder: "Question", class: 'form-control' %>
       </div>
-      <div class="col-sm-2">
-        <%= f.select :type, Question.type_options, class: 'c-select' %>
+      <div class="col-sm-3" style="text-align: right">
+        <%= f.select :type, Question.type_options, {}, class: 'c-select' %>
       </div>
     </div>
 
     <%= f.fields_for :choices do |fc| %>
-      <%= render "choice_field_#{f.object.type}", fc: fc %>
+      <%= render "surveys/choice_field_#{f.object.type}", fc: fc %>
     <% end %>
   </div>
   <% if f.object.persisted? %>

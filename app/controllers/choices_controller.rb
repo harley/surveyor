@@ -3,6 +3,13 @@ class ChoicesController < ApplicationController
     choice = Choice.find params[:id]
     survey = choice.survey
     choice.destroy
-    redirect_to edit_survey_path(survey)
+    respond_to do |format|
+      format.html { redirect_to edit_survey_path(survey) }
+      format.js do
+        @form = SurveyForm.new survey
+        @form.prepopulate!
+        render template: 'surveys/update'
+      end
+    end
   end
 end
