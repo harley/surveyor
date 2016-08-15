@@ -11,7 +11,7 @@
   <tbody>
     <% responses.each do |response| %>
       <tr>
-        <td><%= response.id %></td>
+        <td><%= link_to response.id, [response.survey, response] %></td>
         <% survey.questions.each do |question| %>
           <td>
             <% question.choices.each do |choice| %>

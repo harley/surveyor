@@ -1,0 +1,23 @@
+<h1><%= @form.survey_title %></h1>
+
+<%= link_to 'Delete', [@survey, @response], method: 'delete', class: 'btn btn-gray pull-xs-right', data: {confirm: "Are you sure to delete this response?"} %>
+
+<div class="form-inline">
+  <% if @response.previous %>
+    <%= link_to "<", [@survey, @response.previous], class: 'btn btn-secondary' %>
+  <% end %>
+  <%= text_field_tag :response_index , @response.offset_index, class: 'form-control' %>
+  of <%= @survey.responses.size %>
+  <% if @response.next %>
+    <%= link_to ">", [@survey, @response.next], class: 'btn btn-secondary' %>
+  <% end %>
+</div>
+
+<%= form_for [@form.survey, @form] do |f| %>
+  <% @form.response_questions.each do |response_question| %>
+    <%= f.fields_for 'questions[]', response_question do |frq| %>
+      <%= render 'responses/question', question: response_question, f: frq %>
+    <% end %>
+  <% end %>
+  <%= f.submit "Submit", class: 'btn btn-primary btn-lg' %>
+<% end %>
