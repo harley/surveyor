@@ -58,3 +58,6 @@ gem "reform-rails"
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'chartkick', '~> 2.0', '>= 2.0.1'
 gem 'kaminari'
+gem "bullet", :group => "development"
+
+gem 'rack-mini-profiler', require: false
