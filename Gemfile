@@ -59,3 +59,8 @@ gem "reform-rails"
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'chartkick', '~> 2.0', '>= 2.0.1'
 gem 'kaminari'
+
+# we could place this staging too
+group :development do
+  gem 'rack-mini-profiler', '~> 0.10.1', require: false
+end
