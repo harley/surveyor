@@ -24,8 +24,8 @@ class ResponseForm < Reform::Form
   attr_accessor :answers
   property :ip
 
-  def questions
-    survey.questions
+  def eager_questions
+    survey.eager_questions
   end
 
   def survey_title
@@ -37,7 +37,7 @@ class ResponseForm < Reform::Form
   end
 
   def response_questions
-    @resposne_questions ||= questions.map do |question|
+    @response_questions ||= eager_questions.map do |question|
       ResponseQuestion.new(model, question)
     end
   end

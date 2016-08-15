@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>#</th>
-      <% survey.questions.each do |question| %>
+      <% survey.eager_questions.each do |question| %>
         <th><%= question.title %></th>
       <% end %>
     </tr>
@@ -12,7 +12,7 @@
     <% responses.each do |response| %>
       <tr>
         <td><%= link_to response.id, [response.survey, response] %></td>
-        <% survey.questions.each do |question| %>
+        <% survey.eager_questions.each do |question| %>
           <td>
             <% question.choices.each do |choice| %>
               <div>

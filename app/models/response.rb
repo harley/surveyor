@@ -11,7 +11,7 @@ class Response < ApplicationRecord
 
   def grouped_answers
     return @grouped_answers if @grouped_answers
-    @grouped_answers = answers.group_by(&:question_id)
+    @grouped_answers = answers.includes(:choice).group_by(&:question_id)
   end
 
   def previous

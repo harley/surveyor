@@ -47,4 +47,8 @@ class Survey < ApplicationRecord
       end
     end
   end
+
+  def eager_questions
+    @eager_questions ||= questions.includes(:choices)
+  end
 end
