@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: surveyor_production
-  username: surveyor
+  username: <%= ENV['USER'] %>
   password: <%= ENV['SURVEYOR_DATABASE_PASSWORD'] %>
