@@ -40,6 +40,13 @@ end
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
   # command %{rbenv install 2.3.0}
+  command %{source /etc/profile.d/rvm.sh}
+  command %{echo "gem: --no-rdoc --no-ri" > /etc/gemrc} # only run if file doesn't exist
+  command %{rvm install 2.3.1}
+  command %{rvm use 2.3.1 --default}
+  command %{gem install bundler}
+  secret = `rake secret`
+  command %{echo "export SECRET_KEY_BASE=#{secret}" >> /usr/local/rvm/gems/ruby-2.3.1/environment}
 end
 
 desc "Deploys the current version to the server."
