@@ -73,6 +73,10 @@ GEM
       declarative (>= 0.0.8, < 1.0.0)
       representable (>= 2.4.0, <= 3.1.0)
       uber
+    dotenv (2.1.1)
+    dotenv-rails (2.1.1)
+      dotenv (= 2.1.1)
+      railties (>= 4.0, < 5.1)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.6.6)
@@ -120,6 +124,9 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mina (1.0.0)
+      open4 (~> 1.3.4)
+      rake
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
@@ -131,6 +138,7 @@ GEM
     notiffany (0.1.0)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    open4 (1.3.4)
     pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.4)
@@ -252,6 +260,7 @@ DEPENDENCIES
   capybara (~> 2.7, >= 2.7.1)
   chartkick (~> 2.0, >= 2.0.1)
   coffee-rails (~> 4.2)
+  dotenv-rails
   faker (~> 1.6, >= 1.6.6)
   guard-rspec
   jbuilder (~> 2.5)
@@ -259,6 +268,7 @@ DEPENDENCIES
   kaminari
   launchy
   listen (~> 3.0.5)
+  mina
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.0)

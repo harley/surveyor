@@ -58,3 +58,5 @@ gem "reform-rails"
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'chartkick', '~> 2.0', '>= 2.0.1'
 gem 'kaminari'
+gem 'mina'
+gem 'dotenv-rails'

@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20160728042324) do
     t.index ["user_id"], name: "index_collaborations_on_user_id", using: :btree
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.integer  "survey_id"
+    t.integer  "user_id"
+    t.integer  "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_permissions_on_survey_id", using: :btree
+    t.index ["user_id"], name: "index_permissions_on_user_id", using: :btree
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.integer  "survey_id"
@@ -52,14 +62,6 @@ ActiveRecord::Schema.define(version: 20160728042324) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_questions_on_survey_id", using: :btree
-  end
-
-  create_table "resources", force: :cascade do |t|
-    t.integer  "survey_id"
-    t.string   "ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["survey_id"], name: "index_resources_on_survey_id", using: :btree
   end
 
   create_table "responses", force: :cascade do |t|
@@ -90,7 +92,8 @@ ActiveRecord::Schema.define(version: 20160728042324) do
   add_foreign_key "choices", "questions"
   add_foreign_key "collaborations", "surveys"
   add_foreign_key "collaborations", "users"
+  add_foreign_key "permissions", "surveys"
+  add_foreign_key "permissions", "users"
   add_foreign_key "questions", "surveys"
-  add_foreign_key "resources", "surveys"
   add_foreign_key "responses", "surveys"
 end
