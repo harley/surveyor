@@ -73,10 +73,6 @@ GEM
       declarative (>= 0.0.8, < 1.0.0)
       representable (>= 2.4.0, <= 3.1.0)
       uber
-    dotenv (2.1.1)
-    dotenv-rails (2.1.1)
-      dotenv (= 2.1.1)
-      railties (>= 4.0, < 5.1)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.6.6)
@@ -260,7 +256,6 @@ DEPENDENCIES
   capybara (~> 2.7, >= 2.7.1)
   chartkick (~> 2.0, >= 2.0.1)
   coffee-rails (~> 4.2)
-  dotenv-rails
   faker (~> 1.6, >= 1.6.6)
   guard-rspec
   jbuilder (~> 2.5)
@@ -288,4 +283,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
