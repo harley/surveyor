@@ -1,7 +1,9 @@
 class ResponsesController < ApplicationController
   def index
     load_survey
-    @responses = @survey.responses.page(params[:page]).per(params[:per])
+    @responses = @survey.responses
+                        .includes(answers: [:choice])
+                        .page(params[:page]).per(params[:per])
 
     respond_to do |format|
       format.html
@@ -58,7 +60,7 @@ class ResponsesController < ApplicationController
 
   private
   def load_survey
-    @survey = Survey.find params[:survey_id]
+    @survey = Survey.includes(questions: [:choices]).find(params[:survey_id])
   end
 
   def response_params
